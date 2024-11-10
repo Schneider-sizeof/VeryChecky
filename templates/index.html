@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Checker</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="glass-container">
+        <h1>Email Address Checker 📮</h1>
+        <form method="POST">
+            
+            <input type="email" name="email" placeholder="Enter email address" required>
+            <button type="submit">Check</button>
+        </form>
+    </div>
+
+    <!-- Modal Structure -->
+    {% if email is defined %}
+    <div class="modal" id="resultModal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">×</span>
+            <p>
+                The email address <strong>{{ email }}</strong> is 
+                {% if is_valid %}
+                    <span style="color: green;">valid</span>.
+                {% else %}
+                    <span style="color: red;">invalid</span>.
+                {% endif %}
+            </p>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        // Show modal on page load if there's a result
+        window.onload = function() {
+            const modal = document.getElementById('resultModal');
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        };
+
+        // Close modal function
+        function closeModal() {
+            document.getElementById('resultModal').style.display = 'none';
+        }
+    </script>
+     <div class="footer">
+        <p id="fot">&copy; VeryChecky | Made by <a href="https://www.linkedin.com/in/ayyoubberoigui/">Beroigui </a> ❤️</p>
+    </div>
+
+</body>
+</html>
